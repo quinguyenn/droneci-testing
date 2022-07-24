@@ -31,4 +31,4 @@ steps:
     container: online-cv
     namespace: defaut
     tag:     
-      - linux-amd64
+      - latest
