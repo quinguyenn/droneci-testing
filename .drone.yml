@@ -23,14 +23,12 @@ steps:
 - name: Deploy
   image: quay.io/honestbee/drone-kubernetes
   settings:
-    kubernetes_server: https://454688d5-7150-4308-8efa-eda8994be1e8.k8s.ondigitalocean.com
-    kubernetes_cert:
-      from_secret: KUBERNETES_CERT
-    kubernetes_token:
-      from_secret: KUBERNETES_TOKEN
+    kubernetes_server: ${KUBERNETES_SERVER}
+    kubernetes_cert: ${KUBERNETES_CERT}
+    kubernetes_token: ${KUBERNETES_TOKEN}
     deployment: online-cv
     repo: nquizx/online-cv
     container: online-cv
     namespace: defaut
-    tag:                 
+    tag:     
       - linux-amd64
