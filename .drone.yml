@@ -3,9 +3,20 @@ type: kubernetes
 name: default
 
 steps:
-- name: Install > Build > Start
+- name: Test
   image: node
   commands:
   - npm ci
   - npm run build
   - npm run start
+
+- name: Build Docker image
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    repo: nquizx/online-cv
+    auto_tag: true
+    auto_tag_suffix: linux-amd64
