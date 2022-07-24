@@ -20,3 +20,21 @@ steps:
     repo: nquizx/online-cv
     auto_tag: true
     auto_tag_suffix: linux-amd64
+
+- name: Deploy
+  image: quay.io/honestbee/drone-kubernetes
+  settings:
+    kubernetes_server:
+      from_secret: kubernetes_server
+    kubernetes_cert:
+      from_secret: kubernetes_cert
+    kubernetes_token:
+      from_secret: kubernetes_token
+    deployment: online-cv
+    repo: nquizx/online-cv
+    container: online-cv
+    namespace: defaut
+    tag:                 
+        - linux-amd64
+  when:
+      branch: [ master ]
