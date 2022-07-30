@@ -19,16 +19,3 @@ steps:
       from_secret: docker_password
     repo: nquizx/online-cv
     auto_tag: true
-
-- name: Deploy
-  image: quay.io/honestbee/drone-kubernetes
-  settings:
-    kubernetes_server: ${KUBERNETES_SERVER}
-    kubernetes_cert: ${KUBERNETES_CERT}
-    kubernetes_token: ${KUBERNETES_TOKEN}
-    deployment: online-cv
-    repo: nquizx/online-cv
-    container: online-cv
-    namespace: defaut
-    tag:     
-      - latest
